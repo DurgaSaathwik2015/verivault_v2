@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VeriVault</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+
+<section id="auth" class="hide">
+  <div class="hero">
+    <div class="logo"><i>🔐</i>VeriVault</div>
+    <h1>Share documents.<br><span>Keep control. Prove it.</span></h1>
+    <p>Every file is private by default. Grant access per document, revoke it instantly, and keep a tamper-evident trail of everything that happens.</p>
+    <div class="feats">
+      <div><b>🔑</b>Per-document read / edit permissions</div>
+      <div><b>⚡</b>Instant access revocation</div>
+      <div><b>🧾</b>Hash-chained audit trail you can verify</div>
+    </div>
+  </div>
+  <div class="authwrap"><div class="card">
+    <div class="tabs"><button id="t-login" class="on">Sign in</button><button id="t-reg">Create account</button></div>
+    <div id="f-reg" class="hide"><label>Username</label><input id="r-user" autocomplete="username"></div>
+    <label>Email</label><input id="a-email" type="email" autocomplete="email">
+    <label>Password</label><input id="a-pass" type="password" autocomplete="current-password" placeholder="min. 8 characters">
+    <div class="err" id="a-err"></div>
+    <button class="btn pri" id="a-go" style="width:100%;margin-top:8px">Sign in</button>
+  </div></div>
+</section>
+
+<section id="app" class="hide">
+  <header>
+    <div class="logo"><i>🔐</i>VeriVault</div>
+    <nav>
+      <button data-tab="mine" class="on">My documents</button>
+      <button data-tab="shared">Shared with me</button>
+      <button data-tab="audit">Activity</button>
+      <button data-tab="admin" class="hide">Admin</button>
+    </nav>
+    <div class="sp"></div>
+    <div class="me"><span id="me-name"></span><span class="pill" id="me-role"></span><button class="btn sm" id="pw">Password</button><button class="btn sm" id="logout">Sign out</button></div>
+  </header>
+  <main id="view"></main>
+</section>
+
+<div id="toasts"></div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

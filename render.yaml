@@ -1,0 +1,23 @@
+# Render Blueprint: New + > Blueprint > pick this repo.
+services:
+  - type: web
+    name: verivault
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    # ONE worker: the audit lock and login rate limiter are per-process.
+    startCommand: gunicorn -w 1 --threads 4 -b 0.0.0.0:$PORT run:app
+    healthCheckPath: /health
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: TRUST_PROXY
+        value: "1"
+      - key: SEED_DEMO
+        value: "1"           # demo accounts + sample documents (see README)
+      # Free plans have an ephemeral disk: data resets on redeploy/restart and
+      # the seed recreates the demo. Use a paid plan + a disk, then set:
+      # - key: DATA_DIR
+      #   value: /var/data
