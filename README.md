@@ -2,7 +2,7 @@
 
 Secure document sharing with per-document permissions, instant revocation and a tamper-evident audit trail. Flask + SQLite + a dependency-free web UI. Built for the Snovasys RISE challenge.
 
-**Live demo:** _(put your deployed URL here)_
+**Live demo:** https://verivault-3e5w.onrender.com
 
 ## Demo accounts (demo deployment only, created by `SEED_DEMO=1`)
 | Role | Email | Password |
