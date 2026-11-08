@@ -3,49 +3,71 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VeriVault</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
+<title>TrustVault | Document security</title>
+<meta name="application-name" content="VeriVault">
 <link rel="stylesheet" href="/static/app.css">
 </head>
 <body>
 
-<section id="auth" class="hide">
-  <div class="hero">
-    <div class="logo"><i>🔐</i>VeriVault</div>
-    <h1>Share documents.<br><span>Keep control. Prove it.</span></h1>
-    <p>Every file is private by default. Grant access per document, revoke it instantly, and keep a tamper-evident trail of everything that happens.</p>
-    <div class="feats">
-      <div><b>🔑</b>Per-document read / edit permissions</div>
-      <div><b>⚡</b>Instant access revocation</div>
-      <div><b>🧾</b>Hash-chained audit trail you can verify</div>
+<section id="auth" class="auth-screen hide" aria-label="Welcome to TrustVault">
+  <header class="public-header">
+    <a class="logo" href="#welcome" aria-label="TrustVault home"><svg class="brand-mark" viewBox="0 0 40 40" role="img" aria-label="Shield"><path d="M20 3 34 8v10c0 9-5.7 15.1-14 19C11.7 33.1 6 27 6 18V8l14-5Z"/><path class="shield-check" d="m13.5 20 4.2 4.2 8.8-9"/></svg><span>TrustVault</span></a>
+    <div class="public-actions"><button class="btn quiet" id="public-login">Sign in</button><button class="btn pri" id="public-register">Create account</button></div>
+  </header>
+  <main class="landing" id="welcome">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> PRIVATE BY DEFAULT · ACCOUNTABLE BY DESIGN</p>
+        <h1 id="hero-title">Share documents.<br><span>Prove who opened them.</span></h1>
+        <p class="hero-lede">The right people get in. Everyone else gets nothing. Every attempt is on the record.</p>
+        <div class="hero-actions"><button class="btn pri" id="hero-login">Sign in <span aria-hidden="true">&#8594;</span></button><button class="btn outline" id="hero-register">Create account</button></div>
+        <div class="hero-proof"><span class="proof-rule"></span><span>Permission-aware sharing, with an audit trail that holds up.</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="vault-illustration"><svg viewBox="0 0 250 260"><path class="vault-shadow" d="M125 14 216 48v71c0 58-38 99-91 124-53-25-91-66-91-124V48l91-34Z"/><path class="vault-shield" d="M125 31 200 59v59c0 47-29 81-75 104-46-23-75-57-75-104V59l75-28Z"/><path class="vault-keyhole" d="M125 87a24 24 0 0 0-13 44v34h26v-34a24 24 0 0 0-13-44Z"/><path class="vault-line" d="m104 184 14 13 29-31"/></svg><span class="vault-caption">ACCESS VERIFIED</span></div>
+        <div class="signal signal-top"><span class="signal-check">&#10003;</span><span><b>Access granted</b><small>Permission confirmed</small></span></div>
+        <div class="signal signal-bottom"><span class="signal-record"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5zM8 8h8M8 12h8M8 16h5"/></svg></span><span><b>Event recorded</b><small>Audit trail updated</small></span></div>
+      </div>
+    </section>
+    <section class="landing-features" aria-label="TrustVault safeguards">
+      <article class="feature"><span class="feature-index">01</span><h2>Per-document permissions</h2><p>Choose who can read or edit each file. Access is checked every time.</p></article>
+      <article class="feature"><span class="feature-index">02</span><h2>Access removed instantly</h2><p>Revoke a grant and it takes effect on the next request.</p></article>
+      <article class="feature"><span class="feature-index">03</span><h2>Tamper-evident audit trail</h2><p>Review recorded activity and verify the integrity of its chain.</p></article>
+    </section>
+    <section class="how-it-works" aria-labelledby="how-title"><div class="section-heading"><p class="eyebrow">A CLEAR PATH TO CONTROL</p><h2 id="how-title">How it works</h2></div><div class="steps"><article><span>1</span><div><h3>Keep files private</h3><p>Upload a document to your protected workspace.</p></div></article><article><span>2</span><div><h3>Share with intent</h3><p>Grant a person read or edit access to that file.</p></div></article><article><span>3</span><div><h3>Stay in the know</h3><p>Review access changes and recorded attempts.</p></div></article></div></section>
+    <footer class="public-footer"><a class="logo" href="#welcome"><svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 34 8v10c0 9-5.7 15.1-14 19C11.7 33.1 6 27 6 18V8l14-5Z"/><path class="shield-check" d="m13.5 20 4.2 4.2 8.8-9"/></svg><span>TrustVault</span></a><span>Private by default. Accountable by design.</span><span>&copy; TrustVault</span></footer>
+  </main>
+  <div class="auth-dialog-backdrop hide" id="auth-dialog"><div class="authwrap" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+    <div class="card auth-card"><button id="auth-close" class="icon-btn auth-close" aria-label="Close sign-in dialog" title="Close">&#10005;</button>
+      <div class="auth-card-heading"><span class="eyebrow" id="auth-kicker">WELCOME BACK</span><h2 id="auth-title">Sign in to TrustVault</h2><p id="auth-subtitle">Your documents, shared with care.</p></div>
+      <div class="tabs" role="tablist" aria-label="Account access"><button id="t-login" class="on" role="tab" aria-selected="true">Sign in</button><button id="t-reg" role="tab" aria-selected="false">Create account</button></div>
+      <div id="f-reg" class="hide"><label for="r-user">Username</label><input id="r-user" autocomplete="username"></div>
+      <label for="a-email">Email</label><input id="a-email" type="email" autocomplete="email">
+      <label for="a-pass">Password</label><input id="a-pass" type="password" autocomplete="current-password" placeholder="At least 8 characters">
+      <div class="err" id="a-err" role="alert" aria-live="polite"></div><button class="btn pri auth-submit" id="a-go">Sign in <span aria-hidden="true">&#8594;</span></button>
     </div>
-  </div>
-  <div class="authwrap"><div class="card">
-    <div class="tabs"><button id="t-login" class="on">Sign in</button><button id="t-reg">Create account</button></div>
-    <div id="f-reg" class="hide"><label>Username</label><input id="r-user" autocomplete="username"></div>
-    <label>Email</label><input id="a-email" type="email" autocomplete="email">
-    <label>Password</label><input id="a-pass" type="password" autocomplete="current-password" placeholder="min. 8 characters">
-    <div class="err" id="a-err"></div>
-    <button class="btn pri" id="a-go" style="width:100%;margin-top:8px">Sign in</button>
   </div></div>
 </section>
 
 <section id="app" class="hide">
-  <header>
-    <div class="logo"><i>🔐</i>VeriVault</div>
-    <nav>
-      <button data-tab="mine" class="on">My documents</button>
-      <button data-tab="shared">Shared with me</button>
-      <button data-tab="audit">Activity</button>
-      <button data-tab="admin" class="hide">Admin</button>
-    </nav>
-    <div class="sp"></div>
-    <div class="me"><span id="me-name"></span><span class="pill" id="me-role"></span><button class="btn sm" id="pw">Password</button><button class="btn sm" id="logout">Sign out</button></div>
+  <header class="app-header">
+    <a class="logo" href="#app-home" aria-label="TrustVault home"><svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3 34 8v10c0 9-5.7 15.1-14 19C11.7 33.1 6 27 6 18V8l14-5Z"/><path class="shield-check" d="m13.5 20 4.2 4.2 8.8-9"/></svg><span>TrustVault</span></a>
+    <div class="header-spacer"></div>
+    <div class="me"><span class="avatar" id="me-avatar" aria-hidden="true"></span><span class="identity"><span id="me-name"></span><span class="pill" id="me-role"></span></span><button class="btn sm" id="pw" aria-label="Change password">Password</button><button class="btn sm" id="logout" aria-label="Sign out">Sign out</button></div>
   </header>
-  <main id="view"></main>
+  <div class="app-layout">
+    <nav class="app-nav" aria-label="Main navigation"><span class="nav-label">WORKSPACE</span>
+      <button data-tab="mine" class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h6v6H4zM14 5h6v6h-6zM4 15h6v5H4zM14 15h6v5h-6z"/></svg><span>My documents</span></button>
+      <button data-tab="shared"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 19c0-3.3 2.7-5 6-5s6 1.7 6 5M16 5.5a3 3 0 0 1 0 5.8M18 14c2 .7 3 2.3 3 5"/></svg><span>Shared with me</span></button>
+      <button data-tab="audit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5M4 19h17M7 15l4-4 3 2 6-7"/></svg><span>Activity</span></button>
+      <button data-tab="admin" class="hide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 20 6v5c0 5-3.3 8-8 10-4.7-2-8-5-8-10V6l8-3Z"/><path d="M9 12h6M12 9v6"/></svg><span>Admin overview</span></button>
+      <div class="nav-footer"><span class="status-dot"></span><span>Secure workspace</span></div>
+    </nav>
+    <main id="view" tabindex="-1"></main>
+  </div>
 </section>
 
-<div id="toasts"></div>
+<div id="toasts" role="status" aria-live="polite" aria-atomic="false"></div>
 
 <script src="/static/app.js"></script>
 </body>
