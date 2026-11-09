@@ -2,13 +2,13 @@
 
 Secure document sharing with per-document permissions, instant revocation and a tamper-evident audit trail. Flask + SQLite + a dependency-free web UI. Built for the Snovasys RISE challenge.
 
-**Live demo:** https://verivault-3e5w.onrender.com
+**Live demo:** https://verivault-oczo.onrender.com
 
 ## Demo accounts (demo deployment only, created by `SEED_DEMO=1`)
 | Role | Email | Password |
 |---|---|---|
 | Admin | admin@vault.test | Admin#Demo2026 |
-| Owner | owner@vault.test | Owner#Demo2026 |
+| Owner | owner@vault.test | *(redacted)* |
 | Viewer | viewer@vault.test | Viewer#Demo2026 |
 | Viewer (second, for testing) | partner@vault.test | Partner#Demo2026 |
 
@@ -30,7 +30,7 @@ Quick try-out only: `VERIVAULT_DEMO=1` shows a "Become an owner" button. **Never
 
 ## Tests
 ```bash
-python -m pytest -q                    # 85+ tests, incl. app/tests/test_threats.py
+python -m pytest -q                    # 85 tests, incl. app/tests/test_threats.py
 python scripts_mutation_check.py       # removes one security check at a time; every one must be CAUGHT
 ```
 
